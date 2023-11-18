@@ -1,9 +1,11 @@
+import { Container, Logo, LogoutBtn } from '../index'
+import {Link,  useNavigate} from "react-router-dom"
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-// import {useNavigation } from 'react-router-dom'
+
 function Header() {
     const authStatus = useSelector((state)=> state.auth.status)
+    const Navigate = useNavigate()
     const navItems = [
         {name:'Home',
          slug: '/',
@@ -22,9 +24,33 @@ function Header() {
          active: authStatus},
     ]
   return (
-    <>
-        header
-    </>
+    <header className='py-3 shadow bg-gray-500'>
+        <Container>
+        <nav className='flex'>
+          <div className='mr-4'>
+                <Link to='/'>
+                  <Logo width='70px'/>
+                </Link>
+              </div>
+              <ul className='flex ml-auto'>
+                {navItems.map((Item)=>
+                  Item.active ?(
+                   <li key={Item.name}>
+                    <button onClick={()=> Navigate(Item.slug)}>
+                      {Item.name}
+                    </button>
+                    </li>
+                  ):null
+                )}
+                {authStatus && (
+                  <li>
+                    <LogoutBtn/>
+                  </li>
+                )}
+              </ul>
+            </nav>
+        </Container>
+    </header>
   )
 }
 
