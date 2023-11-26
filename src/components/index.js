@@ -4,7 +4,8 @@ import Container from "./Container";
 import Logo from "./Logo";
 import Footer from "./Footer";
 import Postcard from "./Postcard";
-
+import Button from "./Button";
+import Input from "./Input";
 export {
     Header,
     LogoutBtn,
@@ -12,4 +13,6 @@ export {
     Logo,
     Footer,
     Postcard,
+    Button,
+    Input,
 }
