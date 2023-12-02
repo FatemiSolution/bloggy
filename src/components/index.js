@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Postcard from "./Postcard";
 import Button from "./Button";
 import Input from "./Input";
+import Login from "./Login";
 export {
     Header,
     LogoutBtn,
@@ -15,4 +16,5 @@ export {
     Postcard,
     Button,
     Input,
+    Login,
 }

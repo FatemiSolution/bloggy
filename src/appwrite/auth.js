@@ -25,6 +25,7 @@ export class AuthService{
             throw error;
         }
     }
+    // login account
     async login({email, password}){
         try {
             return await this.account.createEmailSession(email, password);
@@ -32,13 +33,15 @@ export class AuthService{
             throw error;
         }
     }
-    async signout(){
+    // signOut account 
+    async signOut(){
         try {
             await this.account.deleteSessions();
         } catch (error) {
          throw error;   
         }
     }
+    // getCurrentUser 
     async getCurrentUser(){
         try {
           return await this.account.get();
