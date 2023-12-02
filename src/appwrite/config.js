@@ -33,18 +33,20 @@ export class Service {
                 title,
                 content,
                 featuredImage,
-                status
+                status,
             })
             
         } catch (error) {
-            throw error;
+            console.log("Appwrite serive :: updatePost :: error", error);
         }
     }
     async deletePost(slug){
         try {
-            return await this.database.deleteDocument(conf.databaseId,conf.collectionId,slug)
+             await this.database.deleteDocument(conf.databaseId,conf.collectionId,slug)
+             return true;
         } catch (error) {
-           throw error; 
+            console.log("Appwrite serive :: deletePost :: error", error);
+            return false;
         }
 
     }
@@ -52,8 +54,8 @@ export class Service {
         try {
            return await this.database.getDocument(conf.databaseId, conf.collectionId, slug)
         } catch (error) {
-            throw error;
-            return false;
+            console.log("Appwrite serive :: getPost :: error", error);
+            return false
         }
     }
     async getPosts(queries = [Query.equal("status","active")]){
@@ -62,8 +64,8 @@ export class Service {
                 conf.databaseId,conf.collectionId,queries
             )
         } catch (error) {
-            throw error;
-            return false;
+            console.log("Appwrite serive :: getPosts :: error", error);
+            return false
         }
     }
     //file uploading services
